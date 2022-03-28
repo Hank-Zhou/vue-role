@@ -1,7 +1,7 @@
 import axios from "axios";
 import { CODE_LOGGED_OTHER, CODE_RELOGIN } from "../config/returnCodeMap";
 import { ACCESS_TOKEN, AUTH } from "../config/constant";
-import router from "../router";
+import router from "../route";
 
 const service = axios.create({
   baseURL: "//127.0.0.1:4000",

@@ -1,13 +1,11 @@
 <template>
-  <div style="height: 170px; margin-top: 60px; text-align: center">
-    XXXX管理系统
-  </div>
-  <div style="text-align: center">
-    姓名:<input v-model="user.name" />
-    <br />
-    密码:<input v-model="user.password" />
-    <br />
-    <button @click="sumbit">提交</button>
+  <div class="bg">
+    <div class="box">
+      <div class="title">Admin System</div>
+      <div class="item">姓名:<input type="text" v-model="user.name" /></div>
+      <div class="item">密码:<input type="password" v-model="user.password" /></div>
+      <button @click="sumbit">提交</button>
+    </div>
   </div>
 </template>
 
@@ -16,7 +14,7 @@ import { reactive } from "vue";
 import { useRouter } from "vue-router";
 import API from "../service/api";
 import { ACCESS_TOKEN, ROLE, MENUS } from "../config/constant";
-import manageRoute from "../router/dynamicRoute";
+import manageRoute from "../route/dynamicRoute";
 
 export default {
   setup() {
@@ -37,3 +35,33 @@ export default {
   },
 };
 </script>
+
+<style>
+.bg {
+  height: 100vh;
+  background: #171c30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box {
+  background-color: #262d47;
+  padding: 40px;
+  border-radius: 10px;
+  color: #fafffb;
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.item {
+  margin-bottom: 20px;
+}
+.item input {
+  margin-left: 15px;
+}
+</style>

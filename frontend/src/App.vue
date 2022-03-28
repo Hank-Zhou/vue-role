@@ -5,7 +5,7 @@
 //新增
 <script>
 import { ROLE } from "./config/constant";
-import manage from "./router/dynamicRoute";
+import manage from "./route/dynamicRoute";
 
 export default {
   watch: {

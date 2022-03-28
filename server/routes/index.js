@@ -7,7 +7,7 @@ let menus = [];
 // 5s刷新一次token
 setInterval(() => {
     accessToken = 's_tk' + Math.random();
-}, 5000)
+}, 500000)
 
 // 登录接口获取token
 router.get("/login", async (ctx) => {

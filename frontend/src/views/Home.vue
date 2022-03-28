@@ -1,7 +1,10 @@
 <template>
   <div class="home">
-    Home页面
-    <button @click="sumbit">提交</button>
+    <div>Home页面</div>
+    <button @click="getData">setup getData</button>
+    <div>id: {{ data.value.data.data.id }}</div>
+    <button @click="methodGetData">methods getData</button>
+    <div>id: {{ id }}</div>
   </div>
 </template>
 
@@ -10,12 +13,33 @@ import { reactive } from "vue";
 import API from "../service/api";
 export default {
   setup() {
+    let data = reactive({value: { data: { data: { id: "" }}}});
     const user = reactive({ name: "", password: "" });
-    const sumbit = () => {
+
+    const getData = async () => {
       console.log(user);
-      API.getData('/getData')
+      data.value = await API.getData('/getData')
+      console.log(data)
     };
-    return { user, sumbit };
+
+    return {
+      user,
+      data,
+      getData,
+    };
   },
+
+  data() {
+    return {
+      id: ""
+    }
+  },
+
+  methods: {
+    async methodGetData() {
+      const { data } = await API.getData('/getData')
+      this.id = data.data.id
+    }
+  }
 }
 </script>

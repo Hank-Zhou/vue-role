@@ -1,20 +1,24 @@
 <template>
   <div id="home">
-    <header>
-      <button style="float: right" @click="exit">退出</button>
-    </header>
-    <main>
-      <aside>
-        <ul style="list-style: none">
-          <li v-for="(item,index) in newMenus" :key="index">
-            <router-link :to="item.path">{{ item.name }}</router-link>
-          </li>
-        </ul>
-      </aside>
-      <article>
+    <aside>
+      <div class="logo">
+        <img class="logo-img" src="./assets/logo.png" alt="logo">
+        <div>Admin</div>
+      </div>
+      <ul style="list-style: none">
+        <li v-for="(item,index) in newMenus" :key="index">
+          <router-link class="href" :to="item.path">{{ item.name }}</router-link>
+        </li>
+      </ul>
+    </aside>
+    <div class="content">
+      <header>
+        <button @click="exit">退出</button>
+      </header>
+      <main>
         <router-view />
-      </article>
-    </main>
+      </main>
+    </div>
   </div>
 </template>
 
@@ -46,21 +50,52 @@ export default {
 <style>
 #home {
   height: 100vh;
+  display: flex;
+  color: #fafffb;
 }
 header {
-  background: #f4f4f5;
+  background: #262d47;
   height: 70px;
-}
-main {
+  margin: 10px;
+  border-radius: 10px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  background: #171c30;
   height: 100%;
+  width: 100%;
 }
 aside {
-  width: 150px;
-  background: gray;
+  width: 220px;
+  background: #262d47;
   height: 100%;
 }
-article {
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+}
+
+.href {
+  color: #67708d;
+  text-decoration:none
+}
+.href:hover {
+  color: #fafffb;
+  text-decoration:none
+}
+main {
   flex: 1;
 }
 </style>
